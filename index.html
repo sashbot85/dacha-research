@@ -4,459 +4,590 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dacha Cabin Project — Supplier Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--indigo:#4F46E5;--indigo-light:#EEF2FF;--indigo-dark:#4338CA;--slate-900:#0F172A;--slate-700:#334155;--slate-500:#64748B;--slate-400:#94A3B8;--slate-200:#E2E6EF;--slate-100:#F1F3F8;--slate-50:#F8FAFC;--green-50:#ECFDF5;--green-600:#059669;--green-700:#047857;--amber-50:#FFFBEB;--amber-600:#D97706;--amber-700:#B45309;--red-50:#FEF2F2;--red-600:#DC2626;--red-700:#B91C1C;--blue-50:#EFF6FF;--blue-700:#1D4ED8}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#F8FAFC;color:var(--slate-900);line-height:1.6;-webkit-font-smoothing:antialiased}
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
-header{background:linear-gradient(135deg,#312E81 0%,var(--indigo) 50%,#6366F1 100%);color:white;padding:48px 0 40px;position:relative;overflow:hidden}
-header::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");pointer-events:none}
-header h1{font-size:2rem;font-weight:800;letter-spacing:-0.02em;position:relative;z-index:1}
-header p{font-size:0.95rem;color:rgba(255,255,255,0.8);margin-top:8px;max-width:700px;position:relative;z-index:1}
-header .stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;position:relative;z-index:1}
-header .stat{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 18px}
-header .stat strong{font-size:1.3rem;display:block}
-header .stat small{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;opacity:0.75}
-nav{background:white;border-bottom:1px solid var(--slate-200);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-nav .container{display:flex;gap:4px;overflow-x:auto;padding:8px 20px;-webkit-overflow-scrolling:touch}
-nav button{background:none;border:none;padding:8px 16px;font-size:0.8rem;font-weight:500;color:var(--slate-500);cursor:pointer;white-space:nowrap;border-radius:8px;transition:all 0.15s}
-nav button:hover{background:var(--slate-100);color:var(--slate-900)}
-nav button.active{background:var(--indigo-light);color:var(--indigo);font-weight:600}
-section{padding:32px 0;display:none}
-section.active{display:block}
-.card{background:white;border:1px solid var(--slate-200);border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-.section-title{font-size:1.2rem;font-weight:700;color:var(--slate-900);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.section-title span{font-size:1.3rem}
-table{width:100%;border-collapse:collapse;font-size:0.78rem}
-th{background:var(--slate-50);color:var(--slate-400);font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 12px;text-align:left;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:1px solid var(--slate-200);position:sticky;top:0}
+:root{--indigo:#4F46E5;--indigo-light:#EEF2FF;--indigo-border:#E0E7FF;--slate-900:#0F172A;--slate-700:#334155;--slate-500:#64748B;--slate-400:#94A3B8;--slate-200:#E2E6EF;--slate-100:#F1F3F8;--slate-50:#F8FAFC;--green-50:#F0FDF4;--green-700:#15803D;--green-200:#BBF7D0;--amber-50:#FFFBEB;--amber-700:#B45309;--amber-200:#FDE68A;--red-50:#FEF2F2;--red-700:#B91C1C;--red-200:#FECACA;--blue-50:#EFF6FF;--blue-700:#1D4ED8;--blue-200:#BFDBFE;--emerald-50:#ECFDF5;--emerald-700:#047857;--emerald-200:#A7F3D0}
+body{font-family:'Inter',system-ui,sans-serif;background:#F8FAFC;color:var(--slate-900);line-height:1.6}
+.container{max-width:1280px;margin:0 auto;padding:24px 20px}
+header{background:linear-gradient(135deg,var(--indigo),#7C3AED);color:#fff;padding:48px 20px;text-align:center}
+header h1{font-size:2rem;font-weight:800;letter-spacing:-0.02em}
+header p{font-size:1rem;opacity:0.85;margin-top:8px;font-weight:300}
+.stats-bar{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.stat-pill{background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:500}
+section{margin-top:40px}
+section>h2{font-size:1.35rem;font-weight:700;color:var(--slate-900);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+section>h2 .icon{width:32px;height:32px;border-radius:8px;background:var(--indigo-light);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-size:16px}
+.card{background:#fff;border:1px solid var(--slate-200);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--slate-50);border-bottom:2px solid var(--slate-200);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0}
 th:hover{color:var(--indigo)}
-td{padding:10px 12px;border-bottom:1px solid var(--slate-100);vertical-align:top}
+th.sorted{color:var(--indigo)}
+td{padding:10px 14px;border-bottom:1px solid var(--slate-100);vertical-align:top}
 tr:hover td{background:var(--slate-50)}
-.badge{display:inline-block;font-size:0.65rem;font-weight:600;padding:2px 10px;border-radius:100px;border:1px solid}
-.badge-green{background:var(--green-50);color:var(--green-700);border-color:#BBF7D0}
-.badge-amber{background:var(--amber-50);color:var(--amber-700);border-color:#FDE68A}
-.badge-red{background:var(--red-50);color:var(--red-700);border-color:#FECACA}
-.badge-blue{background:var(--blue-50);color:var(--blue-700);border-color:#BFDBFE}
-.badge-indigo{background:var(--indigo-light);color:var(--indigo);border-color:#C7D2FE}
-.expand-btn{background:none;border:none;cursor:pointer;color:var(--slate-400);font-size:0.85rem;padding:2px 6px;border-radius:4px;transition:all 0.15s}
-.expand-btn:hover{color:var(--indigo);background:var(--indigo-light)}
-.expand-row{display:none;background:var(--slate-50)}
-.expand-row.open{display:table-row}
-.expand-content{padding:16px 20px;font-size:0.78rem;color:var(--slate-700);line-height:1.7}
-.expand-content h4{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--slate-400);margin:12px 0 4px}
-.expand-content h4:first-child{margin-top:0}
-.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px}
-.stat-card{padding:16px;text-align:center}
-.stat-card .val{font-size:1.5rem;font-weight:700;color:var(--slate-900)}
-.stat-card .label{font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--slate-400);margin-top:4px}
-.stat-card.highlight{border-left:3px solid var(--indigo)}
-.timeline-item{position:relative;padding:16px 20px;border-left:2px solid var(--slate-200);margin-left:12px}
-.timeline-item::before{content:'';position:absolute;left:-6px;top:20px;width:10px;height:10px;border-radius:50%;border:2px solid var(--indigo);background:white}
-.timeline-item.replied::before{background:var(--green-600);border-color:var(--green-600)}
-.timeline-item.sent::before{background:var(--blue-700);border-color:var(--blue-700)}
-.timeline-item.awaiting::before{background:var(--amber-600);border-color:var(--amber-600)}
-.timeline-date{font-size:0.7rem;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.04em}
-.timeline-subject{font-size:0.85rem;font-weight:600;color:var(--slate-900);margin:4px 0}
-.timeline-meta{font-size:0.72rem;color:var(--slate-500);margin-bottom:6px}
-.timeline-msg{display:none;background:white;border:1px solid var(--slate-200);border-radius:8px;padding:14px;font-size:0.75rem;color:var(--slate-700);white-space:pre-wrap;margin-top:8px;line-height:1.6;max-height:300px;overflow-y:auto}
-.timeline-msg.open{display:block}
-.timeline-toggle{font-size:0.7rem;color:var(--indigo);cursor:pointer;background:none;border:none;font-weight:500}
-.timeline-toggle:hover{text-decoration:underline}
-.findings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.finding-card{padding:20px}
-.finding-card h3{font-size:0.9rem;font-weight:700;color:var(--slate-900);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.finding-card ul{list-style:none;padding:0}
-.finding-card li{font-size:0.78rem;color:var(--slate-700);padding:4px 0;padding-left:16px;position:relative}
-.finding-card li::before{content:'→';position:absolute;left:0;color:var(--indigo);font-weight:600}
-.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.filter-bar input{padding:6px 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:0.78rem;font-family:inherit;outline:none;width:220px}
-.filter-bar input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,0.1)}
-.filter-bar select{padding:6px 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:0.78rem;font-family:inherit;outline:none;background:white;cursor:pointer}
-.table-wrap{overflow-x:auto;border-radius:12px}
-.price-low{color:var(--green-700);font-weight:700;background:var(--green-50);padding:2px 6px;border-radius:4px}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid}
+.badge-green{background:var(--green-50);color:var(--green-700);border-color:var(--green-200)}
+.badge-amber{background:var(--amber-50);color:var(--amber-700);border-color:var(--amber-200)}
+.badge-red{background:var(--red-50);color:var(--red-700);border-color:var(--red-200)}
+.badge-blue{background:var(--blue-50);color:var(--blue-700);border-color:var(--blue-200)}
+.badge-emerald{background:var(--emerald-50);color:var(--emerald-700);border-color:var(--emerald-200)}
+.price-best{color:var(--emerald-700);font-weight:700;background:var(--emerald-50);padding:2px 6px;border-radius:4px}
 .price-high{color:var(--red-700);font-weight:700;background:var(--red-50);padding:2px 6px;border-radius:4px}
-.price-mid{font-weight:600}
-footer{text-align:center;padding:32px 0;color:var(--slate-400);font-size:0.72rem;border-top:1px solid var(--slate-200);margin-top:32px}
-@media(max-width:768px){header h1{font-size:1.4rem}header .stats{gap:12px}header .stat{padding:8px 12px}header .stat strong{font-size:1rem}.findings-grid{grid-template-columns:1fr}.grid-cards{grid-template-columns:repeat(2,1fr)}table{font-size:0.7rem}td,th{padding:6px 8px}}
+.expand-btn{background:none;border:none;cursor:pointer;color:var(--slate-400);font-size:16px;padding:0 4px;transition:transform 0.2s}
+.expand-btn.open{transform:rotate(90deg)}
+.detail-row{display:none;background:var(--slate-50)}
+.detail-row.open{display:table-row}
+.detail-content{padding:16px 20px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-item{font-size:12px}
+.detail-item label{font-weight:600;color:var(--slate-400);text-transform:uppercase;font-size:10px;letter-spacing:0.05em;display:block;margin-bottom:2px}
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--slate-200)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-dot{position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--indigo);background:#fff}
+.timeline-dot.replied{background:var(--green-700);border-color:var(--green-700)}
+.timeline-dot.sent{background:var(--blue-700);border-color:var(--blue-700)}
+.timeline-dot.awaiting{background:var(--amber-700);border-color:var(--amber-700)}
+.timeline-card{background:#fff;border:1px solid var(--slate-200);border-radius:8px;padding:14px 16px;cursor:pointer;transition:box-shadow 0.2s}
+.timeline-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.timeline-card h4{font-size:14px;font-weight:600;color:var(--slate-900)}
+.timeline-card .meta{font-size:12px;color:var(--slate-400);margin-top:4px}
+.timeline-msg{display:none;margin-top:10px;padding:12px;background:var(--slate-50);border:1px solid var(--slate-200);border-radius:6px;font-size:12px;color:var(--slate-700);white-space:pre-wrap;line-height:1.7;max-height:300px;overflow-y:auto}
+.timeline-msg.open{display:block}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.finding-card{background:#fff;border:1px solid var(--slate-200);border-radius:10px;padding:20px;border-left:4px solid var(--indigo)}
+.finding-card h3{font-size:14px;font-weight:700;color:var(--slate-900);margin-bottom:6px}
+.finding-card p{font-size:13px;color:var(--slate-500);line-height:1.6}
+.finding-card .highlight{font-weight:700;color:var(--indigo)}
+footer{text-align:center;padding:40px 20px;color:var(--slate-400);font-size:12px;border-top:1px solid var(--slate-200);margin-top:48px}
+@media(max-width:768px){
+  header h1{font-size:1.5rem}
+  .detail-grid{grid-template-columns:1fr}
+  .stats-bar{flex-direction:column;align-items:center}
+  .container{padding:16px 12px}
+  table{font-size:12px}
+  td,th{padding:8px 10px}
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="container">
-<h1>🏔️ Dacha Cabin Project — Supplier Research</h1>
-<p>Comprehensive supplier analysis for an 8-unit prefab A-frame cabin resort in Ontario, Canada. Covers Chinese manufacturers, European alternatives, pricing matrix, and outreach log.</p>
-<div class="stats">
-<div class="stat"><strong>23</strong><small>Suppliers Evaluated</small></div>
-<div class="stat"><strong>10</strong><small>Active Conversations</small></div>
-<div class="stat"><strong>$263–$638</strong><small>/sqm Price Range</small></div>
-<div class="stat"><strong>14</strong><small>Messages Sent</small></div>
-</div>
-</div>
+  <h1>Dacha Cabin Project — Supplier Research</h1>
+  <p>Prefab A-frame cabins for 8-unit glamping resort · Ontario, Canada</p>
+  <div class="stats-bar">
+    <span class="stat-pill">📦 10 Active Suppliers</span>
+    <span class="stat-pill">🟢 3 Quotes Received</span>
+    <span class="stat-pill">💰 $20K–$49K / unit</span>
+    <span class="stat-pill">📐 76 sqm target</span>
+  </div>
 </header>
 
-<nav>
 <div class="container">
-<button class="active" onclick="showSection('matrix',this)">📊 Comparison Matrix</button>
-<button onclick="showSection('chinese',this)">🇨🇳 Chinese Suppliers</button>
-<button onclick="showSection('europe',this)">🌐 Verified Suppliers</button>
-<button onclick="showSection('outreach',this)">📬 Outreach Log</button>
-<button onclick="showSection('findings',this)">💡 Key Findings</button>
-</div>
-</nav>
 
-<!-- COMPARISON MATRIX -->
-<section id="sec-matrix" class="active">
-<div class="container">
-<h2 class="section-title"><span>📊</span> Supplier Comparison Matrix</h2>
-<div class="grid-cards">
-<div class="card stat-card"><div class="val">10</div><div class="label">Active Suppliers</div></div>
-<div class="card stat-card"><div class="val" style="color:var(--green-600)">3</div><div class="label">Quotes Received</div></div>
-<div class="card stat-card"><div class="val">$20K–$49K</div><div class="label">Price Range / Unit</div></div>
-<div class="card stat-card highlight"><div class="val" style="font-size:1rem;color:var(--green-700)">Sijiayu</div><div style="font-size:0.7rem;color:var(--slate-500)">4 workers, 5-7 days</div><div class="label">Fastest Assembly</div></div>
-<div class="card stat-card highlight"><div class="val" style="font-size:1rem;color:var(--blue-700)">Xiacheng</div><div style="font-size:0.7rem;color:var(--slate-500)">$262-290/sqm</div><div class="label">Best Value (unverified)</div></div>
-<div class="card stat-card highlight"><div class="val" style="font-size:0.85rem;color:var(--indigo)">CDPH · March · Sijiayu</div><div style="font-size:0.7rem;color:var(--slate-500)">Best price + speed</div><div class="label">Top 3 Picks</div></div>
-</div>
+<!-- ============ SUPPLIER COMPARISON MATRIX ============ -->
+<section>
+  <h2><span class="icon">📊</span> Supplier Comparison Matrix</h2>
+  <div class="card">
+    <div class="table-wrap">
+      <table id="matrixTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th onclick="sortTable('matrixTable',1)" data-col="1">Contact</th>
+            <th onclick="sortTable('matrixTable',2)" data-col="2">Company</th>
+            <th onclick="sortTable('matrixTable',3,'num')" data-col="3">$/Unit</th>
+            <th onclick="sortTable('matrixTable',4,'num')" data-col="4">$/sqm</th>
+            <th onclick="sortTable('matrixTable',5)" data-col="5">Size</th>
+            <th onclick="sortTable('matrixTable',6)" data-col="6">Assembly</th>
+            <th onclick="sortTable('matrixTable',7)" data-col="7">Insulation</th>
+            <th onclick="sortTable('matrixTable',8)" data-col="8">Kitchen</th>
+            <th onclick="sortTable('matrixTable',9)" data-col="9">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="toggleDetail('d-cdph')">
+            <td><span class="expand-btn" id="btn-d-cdph">▶</span></td>
+            <td>Jessie Yang</td><td>CDPH Hainan</td>
+            <td class="price-best">$21,838</td><td class="price-best">$306</td>
+            <td>71.3 sqm</td><td>TBD</td><td>-30°C rated</td><td>Yes</td>
+            <td><span class="badge badge-green">🟢 Quote received</span></td>
+          </tr>
+          <tr class="detail-row" id="d-cdph"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>Kitchen, manuals, triangle/A-frame (AA-1B model)</div>
+            <div class="detail-item"><label>Not Included</label>Furniture, installation, foundation</div>
+            <div class="detail-item"><label>Production</label>45 days for 8 units</div>
+            <div class="detail-item"><label>Bulk Price</label>$174,700 for 8 units (discounted from $183,200)</div>
+            <div class="detail-item"><label>Notes</label>28-year-old listed company. Follow-up questions sent. Getting frustrated with repeated questions — be concise.</div>
+            <div class="detail-item"><label>Next Action</label>Need supervisor cost and real installed photos</div>
+          </div></div></td></tr>
 
-<div class="filter-bar">
-<input type="text" id="matrixSearch" placeholder="Search suppliers..." oninput="renderMatrix()">
-<select id="matrixStatus" onchange="renderMatrix()">
-<option value="">All Statuses</option>
-<option value="green">✅ Quote Received</option>
-<option value="yellow">🟡 Awaiting</option>
-<option value="red">🔴 No Response</option>
-</select>
-</div>
+          <tr onclick="toggleDetail('d-sijiayu')">
+            <td><span class="expand-btn" id="btn-d-sijiayu">▶</span></td>
+            <td>Shirely Jiang</td><td>Wuhan Sijiayu</td>
+            <td>Awaiting</td><td>Awaiting</td>
+            <td>76 sqm</td><td><strong>4 workers, 5-7 days</strong></td><td>R-30, -30°C</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Awaiting FOB quote</span></td>
+          </tr>
+          <tr class="detail-row" id="d-sijiayu"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>Steel + wooden frame options, R-30 insulation, assembly manuals</div>
+            <div class="detail-item"><label>Highlight</label>⚡ FASTEST assembly: 4 workers, 5-7 days/unit. Can send supervisor to Canada.</div>
+            <div class="detail-item"><label>Notes</label>Very responsive. Checking wooden frame options too. Installed photos coming.</div>
+            <div class="detail-item"><label>Next Action</label>Awaiting price quotes for steel and wooden frame versions</div>
+          </div></div></td></tr>
 
-<div class="card table-wrap">
-<table id="matrixTable">
-<thead><tr>
-<th></th>
-<th onclick="sortMatrix('contact')">Contact</th>
-<th onclick="sortMatrix('company')">Company</th>
-<th onclick="sortMatrix('size')">Size</th>
-<th onclick="sortMatrix('priceUnit')">Price/Unit</th>
-<th onclick="sortMatrix('priceSqm')">$/sqm</th>
-<th onclick="sortMatrix('assemblyDays')">Assembly</th>
-<th onclick="sortMatrix('insulation')">Insulation</th>
-<th>Kitchen</th>
-<th onclick="sortMatrix('status')">Status</th>
-</tr></thead>
-<tbody id="matrixBody"></tbody>
-</table>
-</div>
-</div>
+          <tr onclick="toggleDetail('d-sinova')">
+            <td><span class="expand-btn" id="btn-d-sinova">▶</span></td>
+            <td>Alexa Jin</td><td>Henan Sinova</td>
+            <td class="price-high">$44,520</td><td>$420</td>
+            <td>78 sqm</td><td>3-4 workers, ~7 days</td><td>-30°C, CSA claimed</td><td>TBD</td>
+            <td><span class="badge badge-green">🟢 Quote received</span></td>
+          </tr>
+          <tr class="detail-row" id="d-sinova"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>Full interior decoration, insulation, windows, kitchen, bathroom, CSA certified materials claimed</div>
+            <div class="detail-item"><label>Not Included</label>Furniture, on-site installation, foundation</div>
+            <div class="detail-item"><label>Production</label>55 days for 8 units</div>
+            <div class="detail-item"><label>Notes</label>Updated FOB quote in PDF. Awaiting technician fee details.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-mars')">
+            <td><span class="expand-btn" id="btn-d-mars">▶</span></td>
+            <td>Martin Zhang</td><td>Mars Cabin (Shandong)</td>
+            <td class="price-high">$48,500</td><td class="price-high">$638</td>
+            <td>76 sqm</td><td><strong>4 workers, 1-2 days</strong></td><td>15cm PU, triple glass</td><td>Yes</td>
+            <td><span class="badge badge-green">🟢 Quote received</span></td>
+          </tr>
+          <tr class="detail-row" id="d-mars"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>ALL decoration, water & electrical pre-installed, bathroom (toilet, sink, heater, cabinet), kitchen basics</div>
+            <div class="detail-item"><label>Not Included</label>Furniture, shipping, installation</div>
+            <div class="detail-item"><label>Supervisor</label>$120/day + flights. Pre-assembles 1 unit for QC inspection before shipping.</div>
+            <div class="detail-item"><label>Notes</label>Most expensive but most COMPLETE turnkey. Real factory videos sent. 30% deposit.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-march')">
+            <td><span class="expand-btn" id="btn-d-march">▶</span></td>
+            <td>Lin Wayne</td><td>March House (Qingdao)</td>
+            <td>$22,800</td><td>$300</td>
+            <td>76 sqm</td><td>3-5 workers, 15-20 days</td><td>TBD</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Awaiting real photos</span></td>
+          </tr>
+          <tr class="detail-row" id="d-march"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>Interior decoration materials (NOT furniture), structure, insulation</div>
+            <div class="detail-item"><label>Supervisor</label>$130/day + flights, visa, accommodation, meals. ~1 month for 8 units.</div>
+            <div class="detail-item"><label>Notes</label>900+ projects in 90+ countries. CE, ISO certified. Website: marchhouses.com</div>
+            <div class="detail-item"><label>Next Action</label>Waiting for real installed photos</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-shenghang')">
+            <td><span class="expand-btn" id="btn-d-shenghang">▶</span></td>
+            <td>Hanna Li</td><td>Dalian Shenghang</td>
+            <td>$19,800 <small>(62sqm)</small></td><td>~$319</td>
+            <td>76 sqm req</td><td>5-7 days</td><td>TBD</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Awaiting 76sqm price</span></td>
+          </tr>
+          <tr class="detail-row" id="d-shenghang"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>$19,800 is for 62sqm model. 76sqm pricing requested. Offers video conference assembly guidance (can't get visa).</div>
+            <div class="detail-item"><label>Next Action</label>Awaiting 76sqm quote and floor plan</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-sunfine')">
+            <td><span class="expand-btn" id="btn-d-sunfine">▶</span></td>
+            <td>Phoebe Zeng</td><td>Xiamen Sunfine</td>
+            <td>$27,180 <small>(65sqm)</small></td><td>$418</td>
+            <td>65 sqm max</td><td>TBD</td><td>TBD</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Checking 76sqm</span></td>
+          </tr>
+          <tr class="detail-row" id="d-sunfine"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Honest — hasn't built larger than 65sqm. Checking if custom 70-76sqm is possible. EXW (not FOB).</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-changxu')">
+            <td><span class="expand-btn" id="btn-d-changxu">▶</span></td>
+            <td>Camille Wu</td><td>Shanghai Changxu</td>
+            <td>TBD</td><td>TBD</td>
+            <td>TBD</td><td>TBD</td><td>Custom -30°C</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Waiting on quote</span></td>
+          </tr>
+          <tr class="detail-row" id="d-changxu"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Confirmed triangle houses. Sent PDF price list with past client designs. $500 refundable 3D design fee. Bulk discount offered.</div>
+            <div class="detail-item"><label>Next Action</label>Review price list PDF, select preferred size, request FOB quote for 8 units</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-senfya')">
+            <td><span class="expand-btn" id="btn-d-senfya">▶</span></td>
+            <td>Leah Huang</td><td>Taizhou Senfya</td>
+            <td>$24K–$34K est</td><td>$300–450</td>
+            <td>8m×8m</td><td>TBD</td><td>Local PU recommended</td><td>TBD</td>
+            <td><span class="badge badge-amber">🟡 Pricing Monday</span></td>
+          </tr>
+          <tr class="detail-row" id="d-senfya"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Included</label>Structure, loft, insulation, windows, basic interior</div>
+            <div class="detail-item"><label>Notes</label>Recommended local polyurethane insulation — fiberglass too thick for container shipping. 43% reorder rate.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('d-xiacheng')">
+            <td><span class="expand-btn" id="btn-d-xiacheng">▶</span></td>
+            <td>Grayson Zou</td><td>Guangdong Xiacheng</td>
+            <td>$20K–$22K</td><td class="price-best">$262–290</td>
+            <td>76 sqm</td><td>TBD</td><td>TBD</td><td>TBD</td>
+            <td><span class="badge badge-red">🔴 No response</span></td>
+          </tr>
+          <tr class="detail-row" id="d-xiacheng"><td colspan="10"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>⚠️ Red Flags</label>No reply since Feb 27. No website. Cheapest estimate but completely unverified quality.</div>
+          </div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<!-- CHINESE SUPPLIERS -->
-<section id="sec-chinese">
-<div class="container">
-<h2 class="section-title"><span>🇨🇳</span> Chinese Suppliers (Alibaba)</h2>
-<div class="filter-bar">
-<input type="text" id="chinaSearch" placeholder="Search by company, contact, type..." oninput="renderChina()">
-<select id="chinaStatus" onchange="renderChina()">
-<option value="">All Statuses</option>
-<option value="Quoted">Quoted</option>
-<option value="Discussing">Discussing</option>
-<option value="New Lead">New Lead</option>
-</select>
-</div>
-<div class="card table-wrap">
-<table id="chinaTable">
-<thead><tr>
-<th></th>
-<th onclick="sortChina('company')">Company</th>
-<th onclick="sortChina('contact')">Contact</th>
-<th onclick="sortChina('type')">Type</th>
-<th onclick="sortChina('fobPrice')">FOB Price</th>
-<th onclick="sortChina('priceSqm')">$/sqm</th>
-<th onclick="sortChina('size')">Size</th>
-<th onclick="sortChina('status')">Status</th>
-<th>Last Contact</th>
-</tr></thead>
-<tbody id="chinaBody"></tbody>
-</table>
-</div>
-</div>
+<!-- ============ ALIBABA SUPPLIERS (EXTENDED) ============ -->
+<section>
+  <h2><span class="icon">🏭</span> Chinese Suppliers — Full Research</h2>
+  <p style="font-size:13px;color:var(--slate-500);margin-bottom:16px">Extended list of 22 suppliers identified on Alibaba. Includes new leads not yet contacted.</p>
+  <div class="card">
+    <div class="table-wrap">
+      <table id="alibabaTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th onclick="sortTable('alibabaTable',1)">Company</th>
+            <th onclick="sortTable('alibabaTable',2)">Contact</th>
+            <th onclick="sortTable('alibabaTable',3)">Type</th>
+            <th onclick="sortTable('alibabaTable',4)">FOB Price</th>
+            <th onclick="sortTable('alibabaTable',5)">$/sqm</th>
+            <th onclick="sortTable('alibabaTable',6)">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="toggleDetail('a-cdph')"><td><span class="expand-btn" id="btn-a-cdph">▶</span></td><td>CDPH (Hainan)</td><td>Jessie Yang</td><td>Triangle House / A-frame</td><td>$21,838/unit (8 units)</td><td>~$307</td><td><span class="badge badge-green">Quoted</span></td></tr>
+          <tr class="detail-row" id="a-cdph"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Size</label>28-71 sqm models available</div>
+            <div class="detail-item"><label>Bulk Deal</label>$174,700 for 8 units (discounted from $183,200). 45-day production.</div>
+            <div class="detail-item"><label>Included</label>Structure, kitchen, assembly manuals, handles -30°C with heating</div>
+            <div class="detail-item"><label>Notes</label>28-year-old listed company. Getting frustrated with repeated questions — be concise in follow-ups.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-mars')"><td><span class="expand-btn" id="btn-a-mars">▶</span></td><td>Mars Cabin (Shandong)</td><td>Martin Zhang</td><td>A-frame Cabin (Steel)</td><td>$30,137/unit (8 units)</td><td>~$397</td><td><span class="badge badge-green">Quoted</span></td></tr>
+          <tr class="detail-row" id="a-mars"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Size</label>8.5×9×6m (~76 sqm)</div>
+            <div class="detail-item"><label>Included</label>15cm PU insulation, triple glass, ALL decoration, kitchen, bathroom, plumbing & electrical</div>
+            <div class="detail-item"><label>Assembly</label>4 workers, 3-5 days. Supervisor $120/day + flights. Pre-assembles 1 unit for QC.</div>
+            <div class="detail-item"><label>Notes</label>Most complete turnkey option. 30% deposit. Real factory videos sent. Strong contender — consider video call.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-march')"><td><span class="expand-btn" id="btn-a-march">▶</span></td><td>March House (Qingdao)</td><td>Lin Wayne</td><td>Custom Prefab Wooden</td><td>~$22,800</td><td>~$300</td><td><span class="badge badge-green">Quoted</span></td></tr>
+          <tr class="detail-row" id="a-march"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Assembly</label>3-5 workers, 15-20 days/unit, crane + forklift. Supervisor $130/day.</div>
+            <div class="detail-item"><label>Notes</label>900+ projects in 90+ countries. CE, ISO. Waiting for real installed photos.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-sinova')"><td><span class="expand-btn" id="btn-a-sinova">▶</span></td><td>Henan Sinova</td><td>Alexa Jin</td><td>A-frame / Luxury Prefab</td><td>$44,520</td><td>~$420</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-sinova"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Size</label>106 sqm</div>
+            <div class="detail-item"><label>Included</label>Full interior decoration, insulation, windows, kitchen, bathroom</div>
+            <div class="detail-item"><label>Notes</label>Sent floor plan PDF. Seems container-focused. Awaiting confirmation on A-frame/wood capability.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-xiacheng')"><td><span class="expand-btn" id="btn-a-xiacheng">▶</span></td><td>Guangdong Xiacheng</td><td>Grayson Zou</td><td>Prefab Wooden / A-frame Kit</td><td>$20,000–$22,000</td><td>$263–291</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-xiacheng"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Confirmed 8.5×9m feasible. No website (Alibaba only). No response since Feb 27. Cheapest but unverified.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-senfya')"><td><span class="expand-btn" id="btn-a-senfya">▶</span></td><td>Taizhou Senfya</td><td>Leah Huang</td><td>Wooden Cabin with Loft</td><td>$24,000–$34,000</td><td>$300–450</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-senfya"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>8m×8m adjustable. Recommended local polyurethane insulation. 43% reorder rate. Very dated website.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-sunfine')"><td><span class="expand-btn" id="btn-a-sunfine">▶</span></td><td>Xiamen Sunfine</td><td>Phoebe Zeng</td><td>Prefab Architecture</td><td>TBD</td><td>TBD</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-sunfine"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Asked about size requirements. Sent full specs. Awaiting initial quote.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-shenghang')"><td><span class="expand-btn" id="btn-a-shenghang">▶</span></td><td>Dalian Shenghang</td><td>Hanna Li</td><td>Light Steel Prefab Villa</td><td>~$27,359</td><td>~$360</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-shenghang"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>CE/CPR certified. Wants to discuss after-sales. Awaiting assembly details.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-sijiayu')"><td><span class="expand-btn" id="btn-a-sijiayu">▶</span></td><td>Wuhan Sijiayu</td><td>Shirely Jiang</td><td>Steel A-frame Villa</td><td>TBD</td><td>TBD</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-sijiayu"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Highlight</label>⚡ FASTEST assembly: 4 workers, 5-7 days. R-30 insulation. Very responsive.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-changxu')"><td><span class="expand-btn" id="btn-a-changxu">▶</span></td><td>Shanghai Changxu</td><td>Camille Wu</td><td>Triangle House / A-frame</td><td>TBD (price list sent)</td><td>TBD</td><td><span class="badge badge-amber">Discussing</span></td></tr>
+          <tr class="detail-row" id="a-changxu"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Confirmed triangle houses. Sent PDF price list. $500 refundable 3D design fee. Bulk discount offered.</div>
+          </div></div></td></tr>
+
+          <!-- NEW LEADS -->
+          <tr onclick="toggleDetail('a-sinomega')"><td><span class="expand-btn" id="btn-a-sinomega">▶</span></td><td>Sinomega House (Qingdao)</td><td>—</td><td>A-frame Resort Cottage (Wood Log)</td><td>$15,200–$18,240</td><td>$200–240</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-sinomega"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>6 yrs on Alibaba. Very competitive pricing. Resort cottage & chalet specialist. 142 interested customers.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-iron')"><td><span class="expand-btn" id="btn-a-iron">▶</span></td><td>Shandong Iron Little Craftsman</td><td>—</td><td>Triangle A-frame Prefab</td><td>$19,000–$23,000</td><td>$250–303</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-iron"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>🔥 Highlight</label>80% reorder rate (exceptional!), 849 interested, 5.0★. HIGH PRIORITY.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-endless')"><td><span class="expand-btn" id="btn-a-endless">▶</span></td><td>Shandong Endless Landscape</td><td>—</td><td>Camping Cabin / A-frame Resort</td><td>$19,000–$26,600 est</td><td>$250–350 est</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-endless"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>6 yrs on Alibaba, 5.0★, 31% reorder, 1557 interested. 33,000 sqm factory. Resort specialist. Ships from Qingdao.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-gangte')"><td><span class="expand-btn" id="btn-a-gangte">▶</span></td><td>Shandong Gangte Prefab</td><td>—</td><td>Custom A-frame Capsule/Cabin</td><td>$17,000–$18,000</td><td>$224–237</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-gangte"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>5.0★, 33% reorder, 415 interested. Resort/backyard specialist.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-beidou')"><td><span class="expand-btn" id="btn-a-beidou">▶</span></td><td>Wuhan Beidou Interconnection</td><td>—</td><td>Triangular Roof Modular</td><td>$12,160–$19,608</td><td>$160–258</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-beidou"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>5.0★, 56 interested. Very competitive for triangular/A-frame style. Among the cheapest.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-guanghe')"><td><span class="expand-btn" id="btn-a-guanghe">▶</span></td><td>Shenzhen Guanghe Jucheng</td><td>—</td><td>A-frame Prefab (Shell)</td><td>$6,286–$6,612</td><td>$83–87 (shell)</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-guanghe"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>⚠️ Note</label>Very cheap — likely shell/kit only. 2 yrs on Alibaba. Needs clarification on inclusions.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-keying')"><td><span class="expand-btn" id="btn-a-keying">▶</span></td><td>Shandong Keying Keyue</td><td>—</td><td>A-frame Triangle Cabin</td><td>$32,680–$38,000</td><td>$430–500</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-keying"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>3 yrs on Alibaba. Modern luxury triangle A-frame. 27 interested.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-maoqian')"><td><span class="expand-btn" id="btn-a-maoqian">▶</span></td><td>Chongqing Maoqian Industrial</td><td>—</td><td>Heavy Log Cabin (Eco)</td><td>$28,880–$29,640</td><td>$380–390</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-maoqian"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Real wood log construction. Modern luxurious eco-friendly. Authentic cabin feel.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-remote')"><td><span class="expand-btn" id="btn-a-remote">▶</span></td><td>Remote Mobile House</td><td>—</td><td>A-frame Kit (Foldable)</td><td>$3,500–$4,100</td><td>$46–54 (shell)</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-remote"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>Very cheap kit — 5.0★, 27% reorder, 1645 interested. Shell only. Needs full interior build-out locally.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-dalianwin')"><td><span class="expand-btn" id="btn-a-dalianwin">▶</span></td><td>Dalian Win House</td><td>—</td><td>A-frame / Apple Cabin Hybrid</td><td>$6,900–$15,000</td><td>$91–197</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-dalianwin"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>3 yrs, 5.0★, 180 interested. Both A-frame and capsule styles. Wide price range — need to clarify for 76sqm.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-everfaith')"><td><span class="expand-btn" id="btn-a-everfaith">▶</span></td><td>Zhangjiagang Ever Faith</td><td>—</td><td>Light Steel Frame Prefab</td><td>$15,200+</td><td>$200</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-everfaith"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>21 YEARS on Alibaba — most established supplier found. Low price suggests shell only. Min 100sqm.</div>
+          </div></div></td></tr>
+
+          <tr onclick="toggleDetail('a-ante')"><td><span class="expand-btn" id="btn-a-ante">▶</span></td><td>Weifang Ante Steel</td><td>—</td><td>A-frame Duplex / Granny Flat</td><td>$32,680–$47,880</td><td>$430–630</td><td><span class="badge badge-blue">New Lead</span></td></tr>
+          <tr class="detail-row" id="a-ante"><td colspan="7"><div class="detail-content"><div class="detail-grid">
+            <div class="detail-item"><label>Notes</label>3 yrs, 349 interested. Multi-family/duplex A-frame — could be interesting for loft layout.</div>
+          </div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<!-- VERIFIED SUPPLIERS -->
-<section id="sec-europe">
-<div class="container">
-<h2 class="section-title"><span>🌐</span> Website-Verified Suppliers</h2>
-<p style="font-size:0.82rem;color:var(--slate-500);margin-bottom:20px">Suppliers verified through website research. Quality ratings based on web presence, real project photos, certifications, and North American experience.</p>
-<div class="card table-wrap">
-<table id="euroTable">
-<thead><tr>
-<th onclick="sortEuro('company')">Company</th>
-<th onclick="sortEuro('location')">Location</th>
-<th onclick="sortEuro('priceRange')">Price Range</th>
-<th>Real Photos</th>
-<th>N. America</th>
-<th>Certifications</th>
-<th onclick="sortEuro('quality')">Quality</th>
-<th onclick="sortEuro('verdict')">Verdict</th>
-<th>Already Talking</th>
-</tr></thead>
-<tbody id="euroBody"></tbody>
-</table>
-</div>
-</div>
+<!-- ============ EUROPEAN / WEBSITE SUPPLIERS ============ -->
+<section>
+  <h2><span class="icon">🌍</span> Supplier Websites & Verification</h2>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Price Range</th>
+            <th>Real Photos</th>
+            <th>N. America</th>
+            <th>Certifications</th>
+            <th>Quality</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>DeepBlue SmartHouse</strong></td><td>Henan, China</td><td>Quote-based</td><td>✅</td><td>✅</td><td>ICC-ES ESR-5348</td><td><span class="badge badge-green">Excellent</span></td><td><span class="badge badge-green">Recommended</span></td></tr>
+          <tr><td><strong>March House</strong></td><td>Qingdao, Shandong</td><td>$300/sqm</td><td>✅</td><td>—</td><td>CE, ISO</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-green">Recommended</span></td></tr>
+          <tr><td><strong>Ingreen Wood Industry</strong></td><td>China</td><td>Quote-based</td><td>✅</td><td>—</td><td>—</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-green">Recommended</span></td></tr>
+          <tr><td><strong>Mars Cabin</strong></td><td>Linyi, Shandong</td><td>$638/sqm</td><td>✅</td><td>—</td><td>CE, ISO</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>Volferda Industry</strong></td><td>China (+ US site)</td><td>Premium</td><td>✅</td><td>✅</td><td>Climate-rated</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>Konbuild</strong></td><td>China</td><td>Budget</td><td>✅</td><td>—</td><td>—</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>Taizhou Senfya</strong></td><td>Linhai, Zhejiang</td><td>$300-450/sqm</td><td>✅</td><td>—</td><td>—</td><td><span class="badge badge-red">Poor</span></td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>QSC Prefab House</strong></td><td>Qingdao, Shandong</td><td>Quote-based</td><td>✅</td><td>—</td><td>—</td><td>Basic</td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>Guangdong Xiacheng</strong></td><td>Guangdong</td><td>$263-291/sqm</td><td>❌</td><td>—</td><td>—</td><td>N/A</td><td><span class="badge badge-amber">Worth exploring</span></td></tr>
+          <tr><td><strong>Henan Sinova</strong></td><td>Henan</td><td>$420/sqm</td><td>❌</td><td>—</td><td>—</td><td>N/A</td><td><span class="badge badge-red">Skip</span></td></tr>
+          <tr><td><strong>LubanCabin</strong></td><td>Shanghai</td><td>Premium</td><td>✅</td><td>—</td><td>—</td><td><span class="badge badge-green">Good</span></td><td><span class="badge badge-red">Skip</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<!-- OUTREACH LOG -->
-<section id="sec-outreach">
-<div class="container">
-<h2 class="section-title"><span>📬</span> Outreach Log</h2>
-<div class="grid-cards" style="margin-bottom:24px">
-<div class="card stat-card"><div class="val">14</div><div class="label">Total Messages</div></div>
-<div class="card stat-card"><div class="val" style="color:var(--green-600)">2</div><div class="label">Replied</div></div>
-<div class="card stat-card"><div class="val" style="color:var(--amber-600)">11</div><div class="label">Awaiting Response</div></div>
-<div class="card stat-card"><div class="val" style="color:var(--blue-700)">1</div><div class="label">Sent</div></div>
-</div>
-<div id="outreachTimeline"></div>
-</div>
+<!-- ============ OUTREACH LOG ============ -->
+<section>
+  <h2><span class="icon">📬</span> Outreach Log</h2>
+  <p style="font-size:13px;color:var(--slate-500);margin-bottom:16px">13 messages sent to 16+ contacts across Alibaba Chat and Email</p>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot replied"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-1')">
+        <h4>Initial Outreach — Prefab Cabin Specs & Pricing</h4>
+        <div class="meta">Feb 24, 2026 · Alibaba Chat · 5 recipients · <span class="badge badge-green" style="font-size:10px">Replied</span></div>
+        <div class="meta" style="margin-top:4px">→ Sinova, Xiacheng, March House, Senfya, Mars Cabin</div>
+      </div>
+      <div class="timeline-msg" id="msg-1">Sent full project specs: 8.5m×9m footprint, 76sqm, A-frame style, 2BR/1BA, loft/mezzanine, -30°C insulation. Asked for FOB pricing, container fit, customization options, and what's included vs on-site finish.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot replied"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-2')">
+        <h4>Follow-up — Assembly Logistics & Documentation</h4>
+        <div class="meta">Feb 27, 2026 · Alibaba Chat · 5 recipients · <span class="badge badge-green" style="font-size:10px">Replied</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-2">Asked about workers needed, assembly days, equipment, manuals/drawings, supervisor availability and daily rate, production timeline for 8 units, and building code certifications.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot sent"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-3')">
+        <h4>Reply to Xiacheng — Floors & Port Details</h4>
+        <div class="meta">Feb 27, 2026 · Alibaba Chat · Grayson Zou · <span class="badge badge-blue" style="font-size:10px">Sent</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-3">2 floors — ground floor with living/kitchen/bath, loft mezzanine with bedrooms. Nearest port is Toronto or Hamilton, Ontario, Canada.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot replied"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-4')">
+        <h4>New Supplier Outreach — Full Specs + Assembly</h4>
+        <div class="meta">Feb 27, 2026 · Alibaba Chat · 5 new suppliers · <span class="badge badge-green" style="font-size:10px">Replied</span></div>
+        <div class="meta" style="margin-top:4px">→ Dalian Shenghang, Xiamen Sunfine, Wuhan Sijiayu, Shanghai Changxu, CDPH</div>
+      </div>
+      <div class="timeline-msg" id="msg-4">Combined initial specs + assembly questions in one message to 5 new suppliers. Same specs as initial outreach plus assembly logistics questions.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot awaiting"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-5')">
+        <h4>Individual Follow-ups — 5 Suppliers</h4>
+        <div class="meta">Feb 27, 2026 · Alibaba Chat · Individual replies · <span class="badge badge-amber" style="font-size:10px">Awaiting</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-5">• CDPH (Jessie): Follow-up on $23,800 AA-1B quote — asked about 76sqm customization, insulation, photos
+• Shanghai Changxu (Camille): Clarification on A-frame vs Container capability
+• Xiamen Sunfine (Phoebe): Discussion on size limitation (max 65sqm)
+• Sinova (Alexa): Asked about CSA materials, pricing for 76sqm, volume discount
+• Sijiayu (Shirely): Fastest assembly quote — requested steel and wooden frame pricing</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot awaiting"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-6')">
+        <h4>Email — DeepBlue SmartHouse (ICC-ES Certified)</h4>
+        <div class="meta">Feb 27, 2026 · Email · info@deepbluehome.com · <span class="badge badge-amber" style="font-size:10px">Awaiting</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-6">Inquiry about ICC-ES ESR-5348 certification relevance for Canadian project. Asked about A-frame designs, FOB pricing, assembly documentation, container fit, production timeline.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot awaiting"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-7')">
+        <h4>Email — Sourcing Agents (Sunoon, IMEX, Guangzhou, George Deco)</h4>
+        <div class="meta">Feb 27, 2026 · Email · 4 sourcing agents · <span class="badge badge-amber" style="font-size:10px">Awaiting</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-7">Sent sourcing agent inquiry to 4 firms for factory identification, auditing, price negotiation, QC inspection, and logistics coordination. Estimated FOB value: $160,000-$400,000 for all 8 units.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot awaiting"></div>
+      <div class="timeline-card" onclick="toggleMsg('msg-8')">
+        <h4>Email — Sandy Gao (HS Movable House)</h4>
+        <div class="meta">Feb 27, 2026 · Email · Sandygao@hsmovablehouse.com · <span class="badge badge-amber" style="font-size:10px">Awaiting</span></div>
+      </div>
+      <div class="timeline-msg" id="msg-8">Direct supplier inquiry with full specs. Asked about A-frame options, FOB pricing per unit + volume discount, inclusions, assembly docs, production timeline.</div>
+    </div>
+
+  </div>
 </section>
 
-<!-- KEY FINDINGS -->
-<section id="sec-findings">
-<div class="container">
-<h2 class="section-title"><span>💡</span> Key Findings & Recommendations</h2>
-<div class="findings-grid">
-
-<div class="card finding-card">
-<h3>🏆 Top Picks</h3>
-<ul>
-<li><strong>CDPH (Jessie Yang)</strong> — $21,838/unit, 71.3sqm, kitchen included, 45-day production, 28-year-old company. $174,700 for 8 units.</li>
-<li><strong>Mars Cabin (Martin Zhang)</strong> — $30,137/unit FOB for 8 units, fully turnkey with kitchen/bath/plumbing/electrical. Fastest assembly: 3-5 days. Pre-assembles 1 unit for QC.</li>
-<li><strong>Wuhan Sijiayu (Shirely Jiang)</strong> — Fastest assembly quote (4 workers, 5-7 days). R-30 insulation for -30°C. Steel + wood frame options. Awaiting pricing.</li>
-<li><strong>March House (Lin Wayne)</strong> — $22,800/unit at $300/sqm. 900+ projects in 90+ countries. Supervisor available at $130/day.</li>
-</ul>
-</div>
-
-<div class="card finding-card">
-<h3>💰 Pricing Insights</h3>
-<ul>
-<li>Price range: <strong>$263–$638/sqm</strong> across all quoted suppliers</li>
-<li>Budget tier ($260-$300/sqm): Xiacheng, March House, CDPH — structure + basic finish</li>
-<li>Mid tier ($300-$420/sqm): Sinova, Senfya, Sunfine, Shenghang — more included</li>
-<li>Premium tier ($400-$640/sqm): Mars Cabin — fully turnkey with all fixtures</li>
-<li>Shell-only kits available from $46-$90/sqm but require full local build-out</li>
-<li>Volume discount confirmed: CDPH dropped from $183,200 → $174,700 for 8 units</li>
-<li>Estimated shipping to Toronto/Hamilton: $2,500/container</li>
-</ul>
-</div>
-
-<div class="card finding-card">
-<h3>🔧 Assembly & Logistics</h3>
-<ul>
-<li>Fastest: <strong>Mars Cabin</strong> — 4 workers, 3-5 days/unit (steel frame, pre-assembled sections)</li>
-<li>Fast: <strong>Sijiayu</strong> — 4 workers, 5-7 days/unit (fastest competitive quote)</li>
-<li>Standard: <strong>March House</strong> — 3-5 workers, 15-20 days/unit (wooden frame, more labor)</li>
-<li>Equipment needed: crane + forklift (most suppliers)</li>
-<li>Supervisor rates: $120-$130/day + flights/visa/meals</li>
-<li>All suppliers provide assembly manuals/drawings</li>
-<li>Mars Cabin offers pre-assembly of 1 unit for inspection before shipping</li>
-</ul>
-</div>
-
-<div class="card finding-card">
-<h3>📋 Certification Notes</h3>
-<ul>
-<li><strong>DeepBlue SmartHouse</strong> — ICC-ES ESR-5348 (US building code certified). Best for North American compliance.</li>
-<li><strong>Sinova</strong> — Claims CSA certified materials (unverified)</li>
-<li>No suppliers have <strong>CSA A277</strong> certification (not required for Ontario)</li>
-<li>Most suppliers have CE, ISO certifications (European/Chinese standards)</li>
-<li>Ontario building permits based on OBC — may need local engineer sign-off regardless of supplier certs</li>
-<li>Insulation: R-30+ required for -30°C winters. Most suppliers can accommodate with polyurethane/PU spray foam.</li>
-</ul>
-</div>
-
-<div class="card finding-card">
-<h3>⚠️ Red Flags & Risks</h3>
-<ul>
-<li><strong>Xiacheng</strong> — Cheapest quote but NO website, no response since Feb 27. Unverified quality.</li>
-<li><strong>Sinova</strong> — No website, seems container-focused rather than A-frame specialist</li>
-<li>Shell-only kits ($46-90/sqm) require significant local build-out — hidden costs</li>
-<li><strong>Sunfine</strong> — Honest that they haven't built larger than 65sqm. May not fit 76sqm spec.</li>
-<li>EXW vs FOB pricing: Sunfine quotes EXW (buyer arranges transport from factory)</li>
-<li>CDPH contact (Jessie) getting frustrated with repeated questions — keep follow-ups brief</li>
-</ul>
-</div>
-
-<div class="card finding-card">
-<h3>📌 Next Steps</h3>
-<ul>
-<li>Schedule video call with <strong>Mars Cabin</strong> to see factory and pre-assembled unit</li>
-<li>Get final FOB quotes from <strong>Sijiayu</strong> (steel + wood frame versions)</li>
-<li>Request real installed project photos from <strong>CDPH</strong> and <strong>March House</strong></li>
-<li>Review <strong>Shanghai Changxu</strong> Triangle House Price List PDF</li>
-<li>Reach out to high-priority new leads: <strong>Iron Craftsman</strong> (80% reorder rate), <strong>Endless Landscape</strong> (large factory, resort specialist)</li>
-<li>Contact <strong>DeepBlue SmartHouse</strong> for ICC-ES certified option</li>
-<li>Consider hiring a sourcing agent (Sunoon, IMEX, Guangzhou Sourcing) for final QC and negotiation</li>
-</ul>
-</div>
-
-</div>
-</div>
+<!-- ============ KEY FINDINGS ============ -->
+<section>
+  <h2><span class="icon">💡</span> Key Findings</h2>
+  <div class="findings">
+    <div class="finding-card">
+      <h3>🏆 Top 3 Contenders</h3>
+      <p><span class="highlight">CDPH</span> ($21.8K, kitchen included, 28yr company) · <span class="highlight">Wuhan Sijiayu</span> (fastest assembly: 5-7 days) · <span class="highlight">Mars Cabin</span> (most complete turnkey, $30K but everything included)</p>
+    </div>
+    <div class="finding-card">
+      <h3>💰 Price Range</h3>
+      <p>Quoted prices range from <span class="highlight">$262–$638/sqm</span> ($20K–$49K per unit). Best value at $300/sqm from March House and CDPH. Shell-only kits as low as $46/sqm but need full local build-out.</p>
+    </div>
+    <div class="finding-card">
+      <h3>⚡ Assembly Speed</h3>
+      <p>Fastest: <span class="highlight">Mars Cabin at 1-2 days</span> (fully pre-assembled). Sijiayu: 5-7 days. March House: 15-20 days. All require 3-5 skilled workers minimum + crane/forklift.</p>
+    </div>
+    <div class="finding-card">
+      <h3>🧊 Cold Climate</h3>
+      <p>All top suppliers confirm <span class="highlight">-30°C capability</span>. Mars Cabin offers 15cm PU + triple glass. Sijiayu offers R-30. Senfya recommends local polyurethane insulation applied after assembly.</p>
+    </div>
+    <div class="finding-card">
+      <h3>🚢 Shipping</h3>
+      <p>Most units ship <span class="highlight">2 per 40HQ container</span> (flat-pack). FOB from Qingdao is ideal. Estimated shipping to Toronto/Hamilton: $2,000–$3,000 per container.</p>
+    </div>
+    <div class="finding-card">
+      <h3>🔍 New Leads to Pursue</h3>
+      <p><span class="highlight">Iron Little Craftsman</span> (80% reorder rate!) and <span class="highlight">Endless Landscape</span> (33K sqm factory, 1557 interested) are the highest-priority new leads to contact.</p>
+    </div>
+  </div>
 </section>
+
+</div>
 
 <footer>
-<div class="container">
-<p>Dacha Cabin Project — Supplier Research Database · Last updated March 2026</p>
-<p style="margin-top:4px">Confidential — For internal use and potential business partners</p>
-</div>
+  Dacha Cabin Project — Supplier Research · Last updated March 2026 · Confidential
 </footer>
 
 <script>
-const matrixSuppliers=[{id:"cdph",contact:"Jessie Yang",company:"CDPH Hainan",size:"71.3 sqm (std)",sizeSqm:71.3,priceUnit:21838,priceUnitDisplay:"$21,838",priceSqm:306,priceSqmDisplay:"$306",assemblyWorkers:"TBD",assemblyDays:"TBD",assemblyDaysNum:null,insulation:"-30°C rated",kitchen:"Yes",status:"green",statusLabel:"Quote received",included:"Kitchen included, manuals included, triangle/A-frame design",notIncluded:"Furniture, installation, foundation",notes:"28yr listed company. $174,700 for 8 units. 45-day production.",supervisor:"TBD",production:"45 days"},{id:"sijiayu",contact:"Shirely Jiang",company:"Wuhan Sijiayu",size:"76 sqm",sizeSqm:76,priceUnit:null,priceUnitDisplay:"Awaiting",priceSqm:null,priceSqmDisplay:"Awaiting",assemblyWorkers:"4",assemblyDays:"5-7",assemblyDaysNum:6,insulation:"R-30, -30°C",kitchen:"TBD",status:"yellow",statusLabel:"Awaiting FOB quote",included:"Steel + wooden frame options, R-30 insulation, manuals",notIncluded:"TBD",notes:"FASTEST assembly: 4 workers, 5-7 days/unit. Can send supervisor to Canada.",supervisor:"Can send to Canada",production:"TBD"},{id:"sinova",contact:"Alexa Jin",company:"Henan Sinova",size:"78 sqm",sizeSqm:78,priceUnit:44520,priceUnitDisplay:"$44,520",priceSqm:420,priceSqmDisplay:"$420",assemblyWorkers:"3-4",assemblyDays:"~7",assemblyDaysNum:7,insulation:"-30°C, CSA claimed",kitchen:"TBD",status:"green",statusLabel:"Quote received",included:"Full interior, insulation, windows, kitchen, bathroom, CSA materials",notIncluded:"Furniture, installation, foundation",notes:"CSA certified materials claimed. PDF quote sent.",supervisor:"TBD",production:"55 days"},{id:"mars",contact:"Martin Zhang",company:"Mars Cabin",size:"8.5×9×6m (76sqm)",sizeSqm:76,priceUnit:30137,priceUnitDisplay:"$30,137",priceSqm:397,priceSqmDisplay:"$397",assemblyWorkers:"4",assemblyDays:"3-5",assemblyDaysNum:4,insulation:"15cm PU, triple glass",kitchen:"Yes (full)",status:"green",statusLabel:"Quote received",included:"ALL decoration, plumbing, electrical, kitchen, bathroom, triple glass",notIncluded:"Furniture, shipping, installation",notes:"Most complete. Pre-assembles 1 unit for QC. $120/day supervisor.",supervisor:"$120/day + flights",production:"TBD"},{id:"march",contact:"Lin Wayne",company:"March House",size:"76 sqm",sizeSqm:76,priceUnit:22800,priceUnitDisplay:"$22,800",priceSqm:300,priceSqmDisplay:"$300",assemblyWorkers:"3-5",assemblyDays:"15-20",assemblyDaysNum:17.5,insulation:"TBD",kitchen:"TBD",status:"yellow",statusLabel:"Awaiting photos",included:"Interior materials (not furniture), structure, insulation",notIncluded:"Furniture, installation, cranes/forklifts",notes:"900+ projects, 90+ countries. Supervisor $130/day.",supervisor:"$130/day + flights/visa/meals",production:"TBD"},{id:"shenghang",contact:"Hanna Li",company:"Dalian Shenghang",size:"62→76 sqm",sizeSqm:76,priceUnit:19800,priceUnitDisplay:"$19,800 (62sqm)",priceSqm:319,priceSqmDisplay:"~$319",assemblyWorkers:"TBD",assemblyDays:"5-7",assemblyDaysNum:6,insulation:"TBD",kitchen:"TBD",status:"yellow",statusLabel:"Awaiting 76sqm price",included:"TBD",notIncluded:"TBD",notes:"$19,800 for 62sqm. 76sqm pricing pending. Video assembly guidance (no visa).",supervisor:"Video guidance only",production:"TBD"},{id:"sunfine",contact:"Phoebe Zeng",company:"Xiamen Sunfine",size:"65 sqm max",sizeSqm:65,priceUnit:27180,priceUnitDisplay:"$27,180 (65sqm)",priceSqm:418,priceSqmDisplay:"$418",assemblyWorkers:"TBD",assemblyDays:"TBD",assemblyDaysNum:null,insulation:"TBD",kitchen:"TBD",status:"yellow",statusLabel:"Checking 76sqm",included:"TBD",notIncluded:"TBD",notes:"Honest — max 65sqm built. Checking if 76sqm possible. EXW pricing.",supervisor:"TBD",production:"TBD"},{id:"changxu",contact:"Camille Wu",company:"Shanghai Changxu",size:"TBD",sizeSqm:null,priceUnit:null,priceUnitDisplay:"TBD",priceSqm:null,priceSqmDisplay:"TBD",assemblyWorkers:"TBD",assemblyDays:"TBD",assemblyDaysNum:null,insulation:"TBD",kitchen:"TBD",status:"yellow",statusLabel:"Waiting on quote",included:"$500 refundable 3D design fee",notIncluded:"TBD",notes:"Sent triangle house price list PDF. $500 refundable 3D design. Bulk discount offered.",supervisor:"TBD",production:"TBD"},{id:"senfya",contact:"Leah Huang",company:"Taizhou Senfya",size:"8m×8m",sizeSqm:64,priceUnit:null,priceUnitDisplay:"$24K-$34K est",priceSqm:null,priceSqmDisplay:"$300-450",assemblyWorkers:"TBD",assemblyDays:"TBD",assemblyDaysNum:null,insulation:"Local PU recommended",kitchen:"TBD",status:"yellow",statusLabel:"Pricing Monday",included:"Structure, loft, windows, basic interior",notIncluded:"Furniture, installation, foundation",notes:"Recommended local polyurethane insulation. 43% reorder rate.",supervisor:"TBD",production:"TBD"},{id:"xiacheng",contact:"Grayson Zou",company:"Guangdong Xiacheng",size:"76 sqm",sizeSqm:76,priceUnit:21000,priceUnitDisplay:"$20K-$22K",priceSqm:276,priceSqmDisplay:"$262-290",assemblyWorkers:"TBD",assemblyDays:"TBD",assemblyDaysNum:null,insulation:"TBD",kitchen:"TBD",status:"red",statusLabel:"No response",included:"TBD",notIncluded:"TBD",notes:"Cheapest but NO website, no response since Feb 27. RED FLAG.",supervisor:"TBD",production:"TBD"}];
-
-const chinaSuppliers=[{company:"Henan Sinova Enterprise Co.",contact:"Alexa Jin",type:"A-frame / Luxury Prefab",fobPrice:"$44,520",priceSqm:"~$420/sqm",size:"106 sqm",status:"Discussing",lastContact:"Feb 27, 2026",notes:"Sent floor plan. Listing $483-898/sqm. Seems container-focused. CSA materials claimed.",conversation:"Floor plan sent. Alexa confirmed customization. Sent 14-sec cabin video. Asked if they do A-frame/wood.",nextAction:"Awaiting A-frame/wood capability confirmation",included:"Full interior decoration, insulation, windows, kitchen, bathroom",estLanded:"$47,020"},{company:"Guangdong Xiacheng Modular Construction",contact:"Grayson Zou",type:"Prefab Wooden / A-frame Kit",fobPrice:"$20,000–$22,000",priceSqm:"$263-291/sqm",size:"~76 sqm",status:"Discussing",lastContact:"Feb 27, 2026",notes:"Confirmed 8.5×9m feasible. No CSA. No website (RED FLAG). Cheapest option.",conversation:"Confirmed 8.5×9m doable. No CSA A277. Sent assembly questions.",nextAction:"Awaiting assembly details",included:"Structure, insulation, windows — details TBD",estLanded:"$22,500–$24,500"},{company:"March House (Qingdao) Co.",contact:"Lin Wayne",type:"Custom Prefab Wooden Cabin",fobPrice:"~$22,800",priceSqm:"~$300/sqm",size:"~76 sqm",status:"Quoted",lastContact:"Feb 27, 2026",notes:"Assembly: 3-5 workers, 15-20 days. Crane + forklift. Supervisor $130/day. 900+ projects.",conversation:"$300/sqm confirmed. Detailed assembly info provided. Waiting for real installed photos.",nextAction:"Waiting for real installed photos",included:"Interior decoration materials (not furniture)",estLanded:"~$25,300"},{company:"Taizhou Senfya Wood Products",contact:"Leah Huang",type:"Wooden Cabin with Loft",fobPrice:"$24,000–$34,000",priceSqm:"$300-450/sqm",size:"8m×8m",status:"Discussing",lastContact:"Feb 27, 2026",notes:"Recommended local PU insulation. 43% reorder rate. Very dated website.",conversation:"Discussed 8.5×9m. Recommended local polyurethane insulation.",nextAction:"Awaiting pricing and assembly details",included:"Structure, loft, insulation, windows, basic interior",estLanded:"$26,500–$36,500"},{company:"Shandong Mars Cabin Technology",contact:"Martin Zhang",type:"A-frame Cabin (Steel Frame)",fobPrice:"$30,137/unit (8 units)",priceSqm:"~$397/sqm",size:"8.5×9×6m (~76 sqm)",status:"Quoted",lastContact:"Mar 2, 2026",notes:"MOST COMPLETE: 15cm PU, triple glass, ALL decoration, kitchen, bath, plumbing, electrical. 4 workers, 3-5 days. Pre-assembles 1 unit for QC. Supervisor $120/day.",conversation:"$30,137/unit FOB for 8 units with triple glass. Fully turnkey. 30% deposit. Real factory videos sent.",nextAction:"Consider video call to see factory",included:"ALL decoration, water & electrical, bathroom, kitchen basics",estLanded:"~$32,637"},{company:"CDPH (Hainan) Company Limited",contact:"Jessie Yang",type:"Triangle House / A-frame",fobPrice:"$21,838/unit (8=$174,700)",priceSqm:"~$307/sqm",size:"28-71 sqm models",status:"Quoted",lastContact:"Mar 2, 2026",notes:"$174,700 for 8 units (discounted). 45-day production. Kitchen included. 28-year-old listed company. Getting frustrated — keep follow-ups brief.",conversation:"$174,700 for 8 units. 45-day production. Kitchen included, -30°C capable.",nextAction:"Need supervisor cost and real photos — brief follow-up",included:"Structure, kitchen, manuals, -30°C capable",estLanded:"~$24,338"},{company:"Dalian Shenghang International Trade",contact:"Hanna Li",type:"Light Steel Prefab Villa",fobPrice:"~$27,359",priceSqm:"~$360/sqm",size:"Custom",status:"Discussing",lastContact:"Feb 27, 2026",notes:"CE/CPR certified. Wants to discuss after-sales. $19,800 for 62sqm model.",conversation:"Followed up on after-sales. Asked for assembly details and photos.",nextAction:"Awaiting assembly details and photos",included:"Light steel structure, cold climate insulation",estLanded:"~$29,859"},{company:"Wuhan Sijiayu Industry And Trade",contact:"Shirely Jiang",type:"Steel A-frame Villa",fobPrice:"TBD",priceSqm:"TBD",size:"Custom",status:"Discussing",lastContact:"Feb 27, 2026",notes:"VERY responsive. FASTEST assembly: 4 workers, 5-7 days. R-30 insulation. Supervisor possible. Steel + wood frame options.",conversation:"Steel A-frame with R-30 insulation. 4 workers, 5-7 days/unit. Manuals included. Checking pricing.",nextAction:"Awaiting steel and wood frame price quotes",included:"Steel structure, R-30 insulation, assembly manuals",estLanded:"TBD"},{company:"Shanghai Changxu International Trade",contact:"Camille Wu",type:"Triangle House / A-frame",fobPrice:"TBD (price list sent)",priceSqm:"TBD",size:"Multiple sizes",status:"Discussing",lastContact:"Mar 2, 2026",notes:"Confirmed triangle houses. Sent PDF price list. $500 refundable 3D design fee. Bulk discount offered.",conversation:"Sent Triangle House Price List PDF. Offered $500 refundable 3D design and bulk discount.",nextAction:"Review PDF, select size, request 8-unit quote",included:"$500 refundable 3D design fee, custom insulation",estLanded:"TBD"},{company:"Xiamen Sunfine Architect & Construction",contact:"Phoebe Zeng",type:"Prefab Architecture",fobPrice:"TBD",priceSqm:"TBD",size:"Custom (max 65sqm built)",status:"Discussing",lastContact:"Feb 27, 2026",notes:"Honest about size limitation — max 65sqm. Checking if 70-76sqm possible. EXW pricing.",conversation:"Asked about size and team. Sent full specs. Checking if 76sqm feasible.",nextAction:"Awaiting feasibility for 76sqm",included:"TBD",estLanded:"TBD"}];
-
-const euroSuppliers=[{company:"DeepBlue SmartHouse",location:"Henan, China",priceRange:"Quote-based",realPhotos:true,northAmerica:true,certifications:"ICC-ES ESR-5348",quality:"Excellent",verdict:"Recommended",alreadyTalking:false,notes:"17+ yrs, 10K+ projects, 50+ countries. ICC-ES certified for US building code. Light steel frame."},{company:"March House (Qingdao)",location:"Qingdao, Shandong",priceRange:"$300/sqm",realPhotos:true,northAmerica:false,certifications:"CE, ISO",quality:"Good",verdict:"Recommended",alreadyTalking:true,notes:"900+ projects in 90+ countries. Will send install guide. $22.8K for 76sqm."},{company:"Ingreen Wood Industry",location:"China",priceRange:"Quote-based",realPhotos:true,northAmerica:false,certifications:"None found",quality:"Good",verdict:"Recommended",alreadyTalking:false,notes:"Top 10 wooden house mfr since 2009. Real wood (Russia Pine, SPF). Resort section."},{company:"Shandong Mars Cabin",location:"Linyi, Shandong",priceRange:"$638/sqm",realPhotos:true,northAmerica:false,certifications:"CE, ISO",quality:"Good",verdict:"Worth exploring",alreadyTalking:true,notes:"15cm PU insulation, fully finished. Most expensive but most complete."},{company:"Volferda Industry",location:"China (+ volferda.us)",priceRange:"Premium",realPhotos:true,northAmerica:true,certifications:"Climate-rated",quality:"Good",verdict:"Worth exploring",alreadyTalking:false,notes:"US website exists. Resort/Airbnb specialist. More capsule/pod than cabin."},{company:"Konbuild",location:"China",priceRange:"Budget",realPhotos:true,northAmerica:false,certifications:"None found",quality:"Good",verdict:"Worth exploring",alreadyTalking:false,notes:"Budget container homes. Good reputation. Less relevant for wooden cabins."},{company:"Taizhou Senfya",location:"Linhai, Zhejiang",priceRange:"$300-450/sqm",realPhotos:true,northAmerica:false,certifications:"None found",quality:"Poor",verdict:"Worth exploring",alreadyTalking:true,notes:"Genuine wood mfr. 43% reorder rate. Very dated website."},{company:"QSC Prefab House",location:"Qingdao, Shandong",priceRange:"Quote-based",realPhotos:true,northAmerica:false,certifications:"None found",quality:"Basic",verdict:"Worth exploring",alreadyTalking:false,notes:"10+ yrs, cabin specialist in Qingdao port city."},{company:"Guangdong Xiacheng",location:"Guangdong",priceRange:"$263-291/sqm",realPhotos:false,northAmerica:false,certifications:"None found",quality:"N/A",verdict:"Worth exploring",alreadyTalking:true,notes:"Cheapest option. No website — Alibaba only. Unverified quality."},{company:"Henan Sinova",location:"Henan",priceRange:"$420/sqm",realPhotos:false,northAmerica:false,certifications:"None found",quality:"N/A",verdict:"Skip",alreadyTalking:true,notes:"No website. Higher price. Less confidence without web presence."},{company:"LubanCabin",location:"Shanghai",priceRange:"Premium",realPhotos:true,northAmerica:false,certifications:"None found",quality:"Good",verdict:"Skip",alreadyTalking:false,notes:"Capsule/pod specialist — doesn't match A-frame cabin needs."}];
-
-const outreachLog=[{id:"ol-1",date:"2026-02-24",recipients:["Alexa Jin (Sinova)","Grayson Zou (Xiacheng)","Lin Wayne (March House)","Leah Huang (Senfya)","Martin Zhang (Mars Cabin)"],channel:"Alibaba Chat",subject:"Initial Outreach — Prefab Cabin Specs & Pricing",status:"Replied",message:"Hi, I'm sourcing prefab cabins for a resort project in Ontario, Canada. We're looking for 8 units with these specs:\n\n- Max footprint: 8.5m x 9m per unit (about 76 sqm)\n- Style: A-frame or triangular cabin design\n- 2 bedrooms, 1 bathroom, kitchen, living area\n- Loft/mezzanine option preferred\n- Must handle Canadian winter (-30°C) — strong insulation required\n- Looking at both turnkey and flat-pack/kit options\n\nCan you provide:\n1. What fits within our 8.5x9m footprint?\n2. FOB price per unit?\n3. What's included vs what we finish on-site?\n4. How many units fit in a 40HQ container?\n5. Can you customize to our floor plan?\n\nI've attached our floor plan for reference.\n\nThanks, Alex"},{id:"ol-2",date:"2026-02-27",recipients:["Alexa Jin (Sinova)","Grayson Zou (Xiacheng)","Lin Wayne (March House)","Leah Huang (Senfya)","Martin Zhang (Mars Cabin)"],channel:"Alibaba Chat",subject:"Follow-up — Assembly Logistics & Documentation",status:"Replied",message:"Thanks for the information so far. We're now evaluating assembly logistics. A few more questions:\n\n1. How many workers needed for on-site assembly per unit?\n2. How many days to assemble one unit?\n3. What equipment is required (crane, forklift, etc.)?\n4. Do you provide detailed assembly manuals/drawings?\n5. Can you send a supervisor/technician to guide assembly? If so, what's the daily rate?\n6. What's the production timeline for 8 units?\n7. Do you have any CSA A277 or building code certifications?\n\nThanks, Alex"},{id:"ol-3",date:"2026-02-27",recipients:["Grayson Zou (Xiacheng)"],channel:"Alibaba Chat",subject:"Reply — Floors & Port Details",status:"Sent",message:"2 floors — ground floor with living/kitchen/bath, loft mezzanine with bedrooms. Nearest port is Toronto or Hamilton, Ontario, Canada."},{id:"ol-4",date:"2026-02-27",recipients:["Hanna Li (Dalian Shenghang)","Phoebe Zeng (Xiamen Sunfine)","Shirely Jiang (Wuhan Sijiayu)","Camille Wu (Shanghai Changxu)","Jessie Yang (CDPH)"],channel:"Alibaba Chat",subject:"New Supplier Outreach — Full Specs + Assembly Questions",status:"Replied",message:"Hi, I'm sourcing prefab cabins for a resort project in Ontario, Canada. (Combined initial specs + assembly questions sent to 5 new suppliers)"},{id:"ol-5a",date:"2026-02-27",recipients:["Jessie Yang (CDPH)"],channel:"Alibaba Chat",subject:"Follow-up on $23,800 AA-1B Quote",status:"Awaiting Response",message:"Thank you for the detailed pricing on the AA-1B model (71.3sqm, $23,800 FOB). Can you customize to 76sqm with loft? What insulation is included? Assembly details?"},{id:"ol-5b",date:"2026-02-27",recipients:["Camille Wu (Shanghai Changxu)"],channel:"Alibaba Chat",subject:"Clarification on A-frame vs Container",status:"Awaiting Response",message:"We're specifically looking for A-frame/triangular timber or wood-frame cabins, not container houses. Can you confirm you supply this style?"},{id:"ol-5c",date:"2026-02-27",recipients:["Phoebe Zeng (Xiamen Sunfine)"],channel:"Alibaba Chat",subject:"Size Limitation Discussion",status:"Awaiting Response",message:"What's the largest cabin you've built? Would 50-60sqm be feasible? FOB price? Insulation for -25°C?"},{id:"ol-5d",date:"2026-02-27",recipients:["Alexa Jin (Sinova)"],channel:"Alibaba Chat",subject:"CSA Materials & Pricing Details",status:"Awaiting Response",message:"Great to hear about CSA certified materials. What's the FOB for 76sqm A-frame? Volume discount for 8? Assembly workers/days? Insulation for -25°C?"},{id:"ol-5e",date:"2026-02-27",recipients:["Shirely Jiang (Wuhan Sijiayu)"],channel:"Alibaba Chat",subject:"Fastest Assembly Quote, Pricing Request",status:"Awaiting Response",message:"4 workers and 5-7 days is the fastest quote we've received. Can you provide FOB for both steel and wooden frame (76sqm)? Volume discount for 8? Shipping to Toronto?"},{id:"ol-6",date:"2026-02-27",recipients:["DeepBlue SmartHouse"],channel:"Email",subject:"Inquiry — 8 Prefab Cabin Units for Resort (ICC-ES Certified)",status:"Awaiting Response",message:"Inquiry referencing their ICC-ES ESR-5348 certification. Full specs: 8 units, 76sqm A-frame, -30°C insulation, flat-pack preferred."},{id:"ol-7",date:"2026-02-27",recipients:["Sunoon (sourcing agent)"],channel:"Email",subject:"Sourcing Agent Inquiry — 8 A-frame Cabins ($160K-$400K)",status:"Awaiting Response",message:"Looking for sourcing agent: factory auditing, price negotiation, QC inspection, logistics for 8 prefab cabins."},{id:"ol-8",date:"2026-02-27",recipients:["IMEX Sourcing"],channel:"Email",subject:"Sourcing Agent Inquiry",status:"Awaiting Response",message:"Same sourcing agent template — factory auditing, QC, logistics."},{id:"ol-9",date:"2026-02-27",recipients:["Guangzhou Sourcing"],channel:"Email",subject:"Sourcing Agent Inquiry",status:"Awaiting Response",message:"Same sourcing agent template — factory auditing, QC, logistics."},{id:"ol-10",date:"2026-02-27",recipients:["George Deco"],channel:"Email",subject:"Sourcing Agent Inquiry (Building Materials Focus)",status:"Awaiting Response",message:"Same template adjusted for building materials focus."},{id:"ol-11",date:"2026-02-27",recipients:["Sandy Gao (HS Movable House)"],channel:"Email",subject:"Inquiry — Prefab A-frame Cabins for Resort",status:"Awaiting Response",message:"Direct supplier inquiry: 8 units, 76sqm, A-frame, -30°C insulation, flat-pack, shipping to Toronto/Hamilton."}];
-
-let matrixSortKey='priceSqm',matrixSortDir='asc';
-let chinaSortKey='status',chinaSortDir='asc';
-let euroSortKey='verdict',euroSortDir='asc';
-let expandedRows={};
-
-function showSection(id,btn){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById('sec-'+id).classList.add('active');
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+function toggleDetail(id){
+  const row=document.getElementById(id);
+  const btn=document.getElementById('btn-'+id);
+  if(row){
+    row.classList.toggle('open');
+    if(btn)btn.classList.toggle('open');
+  }
 }
-
-function toggleRow(id){
-  expandedRows[id]=!expandedRows[id];
-  const row=document.getElementById('expand-'+id);
-  if(row)row.classList.toggle('open');
+function toggleMsg(id){
+  const el=document.getElementById(id);
+  if(el)el.classList.toggle('open');
 }
-
-function statusBadge(status,label){
-  const cls=status==='green'?'badge-green':status==='yellow'?'badge-amber':'badge-red';
-  const icon=status==='green'?'✅':status==='yellow'?'🟡':'🔴';
-  return '<span class="badge '+cls+'">'+icon+' '+label+'</span>';
-}
-
-function supplierStatusBadge(status){
-  if(status==='Quoted')return'<span class="badge badge-green">✅ Quoted</span>';
-  if(status==='Discussing')return'<span class="badge badge-amber">💬 Discussing</span>';
-  if(status==='New Lead')return'<span class="badge badge-blue">🆕 New Lead</span>';
-  return'<span class="badge badge-amber">'+status+'</span>';
-}
-
-function outreachStatusBadge(status){
-  if(status==='Replied')return'<span class="badge badge-green">✅ Replied</span>';
-  if(status==='Sent')return'<span class="badge badge-blue">📤 Sent</span>';
-  return'<span class="badge badge-amber">⏳ Awaiting</span>';
-}
-
-function renderMatrix(){
-  const search=(document.getElementById('matrixSearch').value||'').toLowerCase();
-  const sf=document.getElementById('matrixStatus').value;
-  let data=matrixSuppliers.filter(s=>{
-    if(sf&&s.status!==sf)return false;
-    if(search&&!(s.contact+' '+s.company+' '+s.notes).toLowerCase().includes(search))return false;
-    return true;
-  });
-  const prices=data.filter(s=>s.priceSqm).map(s=>s.priceSqm);
-  const minP=Math.min(...prices),maxP=Math.max(...prices);
-  data.sort((a,b)=>{
-    const dir=matrixSortDir==='asc'?1:-1;
-    if(['priceUnit','priceSqm','size','assemblyDays'].includes(matrixSortKey)){
-      const an=matrixSortKey==='size'?a.sizeSqm:matrixSortKey==='assemblyDays'?a.assemblyDaysNum:a[matrixSortKey];
-      const bn=matrixSortKey==='size'?b.sizeSqm:matrixSortKey==='assemblyDays'?b.assemblyDaysNum:b[matrixSortKey];
-      return dir*((an??999999)-(bn??999999));
+function sortTable(tableId,colIdx,type){
+  const table=document.getElementById(tableId);
+  const tbody=table.querySelector('tbody');
+  const rows=Array.from(tbody.querySelectorAll('tr:not(.detail-row)'));
+  const dir=table.dataset.sortCol==colIdx&&table.dataset.sortDir=='asc'?'desc':'asc';
+  table.dataset.sortCol=colIdx;
+  table.dataset.sortDir=dir;
+  rows.sort((a,b)=>{
+    let av=a.cells[colIdx]?.textContent.trim()||'';
+    let bv=b.cells[colIdx]?.textContent.trim()||'';
+    if(type==='num'){
+      const an=parseFloat(av.replace(/[^0-9.-]/g,''))||999999;
+      const bn=parseFloat(bv.replace(/[^0-9.-]/g,''))||999999;
+      return dir==='asc'?an-bn:bn-an;
     }
-    if(matrixSortKey==='status'){const o={green:0,yellow:1,red:2};return dir*((o[a.status]||0)-(o[b.status]||0));}
-    return dir*String(a[matrixSortKey]||'').localeCompare(String(b[matrixSortKey]||''));
+    return dir==='asc'?av.localeCompare(bv):bv.localeCompare(av);
   });
-  let html='';
-  data.forEach(s=>{
-    const pClass=s.priceSqm===minP?'price-low':s.priceSqm===maxP?'price-high':'price-mid';
-    html+='<tr><td><button class="expand-btn" onclick="toggleRow(\'m-'+s.id+'\')">'+(expandedRows['m-'+s.id]?'▼':'▶')+'</button></td><td><strong>'+s.contact+'</strong></td><td style="font-size:0.72rem;color:var(--slate-500)">'+s.company+'</td><td>'+s.size+'</td><td><strong>'+s.priceUnitDisplay+'</strong></td><td><span class="'+pClass+'">'+s.priceSqmDisplay+'</span></td><td>'+(s.assemblyWorkers!=='TBD'?s.assemblyWorkers+' workers, '+s.assemblyDays+' days':'TBD')+'</td><td style="font-size:0.72rem">'+s.insulation+'</td><td>'+s.kitchen+'</td><td>'+statusBadge(s.status,s.statusLabel)+'</td></tr>';
-    html+='<tr class="expand-row '+(expandedRows['m-'+s.id]?'open':'')+'" id="expand-m-'+s.id+'"><td colspan="10"><div class="expand-content"><h4>Included</h4><p>'+s.included+'</p><h4>Not Included</h4><p>'+s.notIncluded+'</p><h4>Supervisor</h4><p>'+s.supervisor+'</p><h4>Production</h4><p>'+s.production+'</p><h4>Notes</h4><p>'+s.notes+'</p></div></td></tr>';
+  rows.forEach(r=>{
+    const detailId=r.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    tbody.appendChild(r);
+    if(detailId){
+      const detail=document.getElementById(detailId);
+      if(detail)tbody.appendChild(detail);
+    }
   });
-  document.getElementById('matrixBody').innerHTML=html;
+  table.querySelectorAll('th').forEach(th=>th.classList.remove('sorted'));
+  table.querySelectorAll('th')[colIdx]?.classList.add('sorted');
 }
-
-function sortMatrix(key){
-  if(matrixSortKey===key)matrixSortDir=matrixSortDir==='asc'?'desc':'asc';
-  else{matrixSortKey=key;matrixSortDir='asc';}
-  renderMatrix();
-}
-
-function renderChina(){
-  const search=(document.getElementById('chinaSearch').value||'').toLowerCase();
-  const sf=document.getElementById('chinaStatus').value;
-  let data=chinaSuppliers.filter(s=>{
-    if(sf&&s.status!==sf)return false;
-    if(search&&!(s.company+' '+s.contact+' '+s.type+' '+s.notes).toLowerCase().includes(search))return false;
-    return true;
-  });
-  data.sort((a,b)=>{const dir=chinaSortDir==='asc'?1:-1;return dir*String(a[chinaSortKey]||'').localeCompare(String(b[chinaSortKey]||''));});
-  let html='';
-  data.forEach((s,i)=>{
-    html+='<tr><td><button class="expand-btn" onclick="toggleRow(\'c-'+i+'\')">'+(expandedRows['c-'+i]?'▼':'▶')+'</button></td><td><strong style="font-size:0.75rem">'+s.company+'</strong></td><td>'+s.contact+'</td><td style="font-size:0.72rem">'+s.type+'</td><td><strong>'+s.fobPrice+'</strong></td><td>'+s.priceSqm+'</td><td>'+s.size+'</td><td>'+supplierStatusBadge(s.status)+'</td><td style="font-size:0.72rem">'+s.lastContact+'</td></tr>';
-    html+='<tr class="expand-row '+(expandedRows['c-'+i]?'open':'')+'" id="expand-c-'+i+'"><td colspan="9"><div class="expand-content"><h4>Included</h4><p>'+s.included+'</p><h4>Est. Landed Cost</h4><p>'+s.estLanded+'</p><h4>Conversation Summary</h4><p>'+(s.conversation||'No conversation yet')+'</p><h4>Next Action</h4><p style="color:var(--indigo);font-weight:600">'+s.nextAction+'</p><h4>Notes</h4><p>'+s.notes+'</p></div></td></tr>';
-  });
-  document.getElementById('chinaBody').innerHTML=html;
-}
-
-function sortChina(key){
-  if(chinaSortKey===key)chinaSortDir=chinaSortDir==='asc'?'desc':'asc';
-  else{chinaSortKey=key;chinaSortDir='asc';}
-  renderChina();
-}
-
-function renderEuro(){
-  const qo={Excellent:0,Good:1,Basic:2,Poor:3,'N/A':4};
-  const vo={Recommended:0,'Worth exploring':1,Skip:2};
-  let data=[...euroSuppliers];
-  data.sort((a,b)=>{
-    const dir=euroSortDir==='asc'?1:-1;
-    if(euroSortKey==='quality')return dir*((qo[a.quality]||5)-(qo[b.quality]||5));
-    if(euroSortKey==='verdict')return dir*((vo[a.verdict]||5)-(vo[b.verdict]||5));
-    return dir*String(a[euroSortKey]||'').localeCompare(String(b[euroSortKey]||''));
-  });
-  let html='';
-  data.forEach(s=>{
-    const qC=s.quality==='Excellent'?'badge-green':s.quality==='Good'?'badge-blue':s.quality==='Poor'?'badge-red':'badge-amber';
-    const vC=s.verdict==='Recommended'?'badge-green':s.verdict==='Skip'?'badge-red':'badge-amber';
-    html+='<tr><td><strong>'+s.company+'</strong></td><td style="font-size:0.72rem">'+s.location+'</td><td>'+s.priceRange+'</td><td>'+(s.realPhotos?'✅':'❌')+'</td><td>'+(s.northAmerica?'✅':'—')+'</td><td style="font-size:0.72rem">'+s.certifications+'</td><td><span class="badge '+qC+'">'+s.quality+'</span></td><td><span class="badge '+vC+'">'+s.verdict+'</span></td><td>'+(s.alreadyTalking?'💬 Yes':'—')+'</td></tr>';
-  });
-  document.getElementById('euroBody').innerHTML=html;
-}
-
-function sortEuro(key){
-  if(euroSortKey===key)euroSortDir=euroSortDir==='asc'?'desc':'asc';
-  else{euroSortKey=key;euroSortDir='asc';}
-  renderEuro();
-}
-
-function renderOutreach(){
-  const sorted=[...outreachLog].sort((a,b)=>b.date.localeCompare(a.date)||b.id.localeCompare(a.id));
-  const grouped={};
-  sorted.forEach(e=>{(grouped[e.date]=grouped[e.date]||[]).push(e);});
-  let html='';
-  Object.entries(grouped).forEach(([date,entries])=>{
-    const d=new Date(date+'T12:00:00');
-    const ds=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    html+='<div style="margin-bottom:24px"><h3 style="font-size:0.75rem;font-weight:700;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">'+ds+'</h3>';
-    entries.forEach(e=>{
-      const cls=e.status==='Replied'?'replied':e.status==='Sent'?'sent':'awaiting';
-      html+='<div class="timeline-item '+cls+'"><div class="timeline-date">'+e.channel+' '+outreachStatusBadge(e.status)+'</div><div class="timeline-subject">'+e.subject+'</div><div class="timeline-meta">→ '+e.recipients.join(', ')+'</div><button class="timeline-toggle" onclick="this.nextElementSibling.classList.toggle(\'open\')">Show message ▾</button><div class="timeline-msg">'+e.message+'</div></div>';
-    });
-    html+='</div>';
-  });
-  document.getElementById('outreachTimeline').innerHTML=html;
-}
-
-renderMatrix();renderChina();renderEuro();renderOutreach();
 </script>
 </body>
 </html>
